@@ -9,41 +9,81 @@ import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-nativ
 
   const add = () => {
     setItemList(currentItems => [...currentItems, { id: Math.random().toString(), value: textItem }]);
-    console.log(itemList.value);
     setTextItem("");
 }
 
   return (
     <View style={styles.container}>
-      <TextInput style={styles.paddin}
+      <View style={styles.inputrow}>
+        <Button   color="#EB2615" title="F" onPress={add} />
+          <TextInput style={styles.input}
         placeholder="item"
         onChangeText={onHandlerChangeItem}
         value={textItem}
-      />
-      <Button title="ADD" onPress={add}/>
-    
+          />
+      
+        <Button color="#72FA2F"  title="V" onPress={add} />
+        
+      </View>
+      <View style={styles.flat}>
+
       <FlatList
         data={itemList}
         renderItem={data => (
-          
-          <Text>hola{ data.item.value}</Text>
+          <View style={styles.textrow}>
+        <Button color="#EB2615" title="F" onPress={add} />
+
+            <Text style={styles.text}>hola{data.item.value}</Text>
+
+
+            <Button color="#72FA2F"  title="V" onPress={add} />
+
+            </View>
+
         )}
       ketExtractor={(item)=>item.id}
       />
+      </View>
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#D49A08',
     alignItems: 'center',
     justifyContent: 'center',
+    padding:10,
+   
   },
-  paddin: {
+  inputrow: {
     
-   paddingTop:50,
+    marginTop: 100,
+    flexDirection:'row',
+    backgroundColor: 'red',
+    
+  },
+  input: {
+    flex: 1,
+    backgroundColor: '#25D7F5',
+    height:50,
+  },
+  flat: {
+    marginTop:9,
+    backgroundColor: '#5B08D4',
+  },
+  textrow: {
+    padding:2,
+    marginTop: 5,
+    flexDirection:'row',
+  },
+  text: {
+    width:260,
+    backgroundColor: '#D49A08',
+    height:50,
+
   }
 });
 export default App;
