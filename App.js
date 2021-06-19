@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
  const App=() => {
   const [textItem, setTextItem] = useState('');
@@ -16,14 +16,25 @@ import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-nativ
   return (
     <View style={styles.container}>
       <View style={styles.inputrow}>
-        <Button   color="#EB2615" title="F" onPress={()=>add("F")} />
+        
+        <TouchableOpacity
+        style={styles.buttonF}
+        onPress={() => add("F")}
+        >
+        <Text>F</Text>
+      </TouchableOpacity>
           <TextInput style={styles.input}
         placeholder="item"
         onChangeText={onHandlerChangeItem}
         value={textItem}
           />
       
-        <Button color="#72FA2F"  title="V" onPress={()=>add("V")} />
+      <TouchableOpacity
+        style={styles.buttonV}
+        onPress={() => add("V")}
+        >
+        <Text>V</Text>
+      </TouchableOpacity>
         
       </View>
       <View style={styles.flat}>
@@ -32,14 +43,25 @@ import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-nativ
         data={itemList}
         renderItem={data => (
           <View style={styles.textrow}>
-        <Button color="#EB2615" title="F" onPress={add} />
+
+            <TouchableOpacity
+        style={styles.buttonF}
+        onPress={() => add("F")}
+        >
+        <Text>F</Text>
+      </TouchableOpacity>
 
             <Text style={styles.text}>{data.item.value}{data.item.validation}</Text>
 
 
-            <Button color="#72FA2F"  title="V" onPress={add} />
+            <TouchableOpacity
+        style={styles.buttonV}
+        onPress={() => add("V")}
+        >
+        <Text>V</Text>
+      </TouchableOpacity>
 
-            </View>
+          </View>
 
         )}
       ketExtractor={(item)=>item.id}
@@ -61,17 +83,17 @@ const styles = StyleSheet.create({
   inputrow: {
     
     marginTop: 100,
-    flexDirection:'row',
+    flexDirection: 'row',
     backgroundColor: 'red',
     
   },
   input: {
     flex: 1,
     backgroundColor: '#25D7F5',
-    height:50,
+    height: 50,
   },
   flat: {
-    marginTop:9,
+    marginTop: 9,
     backgroundColor: '#5B08D4',
   },
   textrow: {
@@ -85,7 +107,21 @@ const styles = StyleSheet.create({
   text: {
     backgroundColor: '#D49A08',
     height: 50,
-    flex:1,
+    flex: 1,
+
+  },
+  buttonF: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: '#EB2615',
+    width:45,
+  },
+  buttonV: {
+    alignItems: "center",
+    justifyContent: "center",
+ 
+    width:45,
+    backgroundColor: '#72FA2F',
 
   }
 });
