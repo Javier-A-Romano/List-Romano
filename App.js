@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {  FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ButtonF } from './components/ButtonF';
 import { ButtonV } from './components/ButtonV';
+import { ComponentFlatList } from './components/ComponentFlatList';
 import { ComponentModal } from './components/ComponentModal';
+import colors from './constants/colors';
 
  const App=() => {
   const [textItem, setTextItem] = useState('');
@@ -55,39 +57,14 @@ import { ComponentModal } from './components/ComponentModal';
       </View>
       <View style={styles.flat}>
 
-      <FlatList
-        data={itemList}
-        renderItem={data => (
-          <View style={styles.textrow}>
-
-            <TouchableOpacity
-        style={styles.buttonF}
-        onPress={() => onHandlerModal(data.item.id,"F")}
-        >
-              <Text>F</Text>
-              
-        </TouchableOpacity>
-
-        <Text style={styles.text}>{data.item.value}</Text>
-
-
-        <TouchableOpacity
-        style={styles.buttonV}
-        onPress={() => onHandlerModal(data.item.id,"V")}
-            >
-              
-              <Text>V</Text>
-              
-        </TouchableOpacity>
-
-        </View>
-
-        )}
-          ketExtractor={(item)=>item.id}
-        />
+        <ComponentFlatList itemList={itemList} onHandlerModal={ onHandlerModal}/>
       </View>
       
-      <ComponentModal modalVisible={modalVisible} itemSelected={itemSelected} onHandlerDelete={ onHandlerDelete}/>
+      <ComponentModal
+        modalVisible={modalVisible}
+        itemSelected={itemSelected}
+        onHandlerDelete={onHandlerDelete}
+      />
 
 
     </View>
@@ -97,7 +74,7 @@ import { ComponentModal } from './components/ComponentModal';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D49A08',
+    backgroundColor: colors.orange,
     alignItems: 'center',
     justifyContent: 'center',
    
@@ -111,81 +88,13 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    backgroundColor: '#25D7F5',
+    backgroundColor:colors.cian,
     height: 50,
   },
   flat: {
     marginTop: 9,
-    backgroundColor: '#5B08D4',
+    backgroundColor:colors.purple,
   },
-  textrow: {
-    
-    marginTop: 5,
-    flexDirection: 'row',
-    width: 360,
-    
-
-  },
-  text: {
-    backgroundColor: '#D49A08',
-    height: 50,
-    flex: 1,
-
-  },
-  buttonF: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: '#EB2615',
-    width:45,
-  },
-  buttonV: {
-    alignItems: "center",
-    justifyContent: "center",
-    width:45,
-    backgroundColor: '#72FA2F',
-
-  },
-  modalContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modalContent: {
-    padding: 30,
-    backgroundColor: '#25D7F5',
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 5,
-    borderRadius: 10,
-    borderColor:'#D49A08',
-  },
-  modalMessage: {
-    fontSize: 18,
-  },
-  modalTitle: {
-    fontSize: 30,
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  shadow: {
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  }, buttonModal: {
-    backgroundColor: '#D49A08',
-    height: 50,
-    width:150,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 10,
-    borderColor: '#5B08D4',
-    borderWidth:5,
-  }
+ 
 });
 export default App;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { TouchableOpacity ,Text, StyleSheet} from 'react-native'
+import colors from '../constants/colors'
 
 export const ButtonV = ({add}) => {
     return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
      
         width:45,
-        backgroundColor: '#72FA2F',
+        backgroundColor: colors.green,
     
       },
 })

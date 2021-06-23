@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity ,Text} from 'react-native'
+import colors from '../constants/colors'
 
 export const ButtonF = ({add}) => {
     return (
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     buttonF: {
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: '#EB2615',
+        backgroundColor: colors.red,
         width:45,
       },
 })

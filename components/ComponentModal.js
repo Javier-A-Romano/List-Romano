@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, StyleSheet , TouchableOpacity,Text,View } from 'react-native';
+import colors from '../constants/colors';
 
 export const ComponentModal = ({modalVisible , itemSelected ,onHandlerDelete }) => {
     return (
@@ -31,13 +32,13 @@ const styles = StyleSheet.create({
       },
       modalContent: {
         padding: 30,
-        backgroundColor: '#25D7F5',
+        backgroundColor: colors.cian,
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 5,
         borderRadius: 10,
-        borderColor:'#D49A08',
+        borderColor:colors.orange,
       },
       modalMessage: {
         fontSize: 18,
@@ -57,13 +58,13 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
       }, buttonModal: {
-        backgroundColor: '#D49A08',
+        backgroundColor: colors.orange,
         height: 50,
         width:150,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 10,
-        borderColor: '#5B08D4',
+        borderColor:colors.purple,
         borderWidth:5,
       }
 });
