@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native';
+import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ButtonF } from './components/ButtonF';
+import { ButtonV } from './components/ButtonV';
+import { ComponentModal } from './components/ComponentModal';
 
  const App=() => {
   const [textItem, setTextItem] = useState('');
@@ -29,38 +32,25 @@ import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, B
      }
    }
 
-   const onHandlerModal = (id, leona) => {
+   const onHandlerModal = (id, optionVorF) => {
      setItemSelected(itemList.filter(item => item.id === id)[0]);
      setModalVisible(!modalVisible);
-     setVorf(leona);
+     setVorf(optionVorF);
    }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputrow}>
         
-        <TouchableOpacity
-        style={styles.buttonF}
-        onPress={() => add("F")}
-        >
-          <Text>F</Text>
-          
-        </TouchableOpacity>
+       <ButtonF add={ add}/>
 
 
         <TextInput style={styles.input}
-        placeholder="item"
+        placeholder="Ingresar afirmacion V o F"
         onChangeText={onHandlerChangeItem}
         value={textItem}
         />
-      
-        <TouchableOpacity
-        style={styles.buttonV}
-        onPress={() => add("V")}
-        >
-          <Text>V</Text>
-          
-        </TouchableOpacity>
+        <ButtonV add={ add}/>
         
       </View>
       <View style={styles.flat}>
@@ -78,7 +68,7 @@ import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, B
               
         </TouchableOpacity>
 
-        <Text style={styles.text}>{data.item.value}{data.item.validation}</Text>
+        <Text style={styles.text}>{data.item.value}</Text>
 
 
         <TouchableOpacity
@@ -97,24 +87,7 @@ import { Modal, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, B
         />
       </View>
       
-      <Modal animationType="slide" visible={modalVisible} transparent>
-        <View style={styles.modalContainer}>
-          <View style={[styles.modalContent, styles.shadow]}>
-            <Text style={styles.modalMessage}>Si elegiste bien se borrara de la lista</Text>
-            <Text style={styles.modalTitle}>{itemSelected.value}</Text>
-            <View>
-             
-              <TouchableOpacity
-           style={styles.buttonModal}
-              onPress={onHandlerDelete}
-             >
-              <Text>CONFIRMAR</Text>
-          
-        </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <ComponentModal modalVisible={modalVisible} itemSelected={itemSelected} onHandlerDelete={ onHandlerDelete}/>
 
 
     </View>
@@ -168,7 +141,6 @@ const styles = StyleSheet.create({
   buttonV: {
     alignItems: "center",
     justifyContent: "center",
- 
     width:45,
     backgroundColor: '#72FA2F',
 
@@ -184,6 +156,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 5,
+    borderRadius: 10,
+    borderColor:'#D49A08',
   },
   modalMessage: {
     fontSize: 18,
