@@ -9,7 +9,7 @@ export const ComponentModal = ({ modalVisible, itemSelected, onHandlerDelete }) 
         <View style={[styles.modalContent, styles.shadow]}>
           <Text style={styles.modalMessage}>Si elegiste bien se borrara de la lista</Text>
           <Text style={styles.modalTitle}>{itemSelected.value}</Text>
-          <View>
+          <View >
 
             <TouchableOpacity
               style={styles.buttonModal}
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   modalContent: {
     padding: 30,
@@ -39,9 +40,12 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderRadius: 10,
     borderColor: colors.orange,
+    elevation: 8,
+
+
   },
   modalMessage: {
-    fontSize: 18,
+    fontSize: 20,
   },
   modalTitle: {
     fontSize: 30,
@@ -57,7 +61,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-  }, buttonModal: {
+  },
+  buttonModal: {
     backgroundColor: colors.orange,
     height: 50,
     width: 150,
@@ -66,5 +71,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: colors.purple,
     borderWidth: 5,
-  }
+  },
+
 });

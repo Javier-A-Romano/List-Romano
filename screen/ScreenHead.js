@@ -24,10 +24,13 @@ export const ScreenHead = ({ add, onHandlerChangeItem, textItem }) => {
 const styles = StyleSheet.create({
 
     inputrow: {
-
+        elevation: 8,
+        borderRadius: 10,
+        paddingVertical: 5,
+        paddingHorizontal: 5,
         marginTop: 100,
         flexDirection: 'row',
-        backgroundColor: 'red',
+
 
     },
     input: {

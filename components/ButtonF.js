@@ -15,6 +15,8 @@ export const ButtonF = ({ add }) => {
 }
 const styles = StyleSheet.create({
   buttonF: {
+
+
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colors.red,
